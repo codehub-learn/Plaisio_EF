@@ -4,9 +4,10 @@ using Plaisio_EF.Domain;
 
 namespace Plaisio_EF.Data
 {
-    public class BooksContext : DbContext
+    public class LibraryContext : DbContext
     {
-        DbSet<Book> Books { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

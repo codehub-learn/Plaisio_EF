@@ -12,5 +12,7 @@ namespace Plaisio_EF.Domain
         public string? Title { get; set; }
         public DateTime? PubDate { get; set; }
         public int? Pages { get; set; }
+        public int? AuthorId { get; set; }
+        public Author? Author { get; set; }
     }
 }

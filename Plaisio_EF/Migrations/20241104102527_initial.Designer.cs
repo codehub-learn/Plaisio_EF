@@ -11,7 +11,7 @@ using Plaisio_EF.Data;
 
 namespace Plaisio_EF.Migrations
 {
-    [DbContext(typeof(BooksContext))]
+    [DbContext(typeof(LibraryContext))]
     [Migration("20241104102527_initial")]
     partial class initial
     {

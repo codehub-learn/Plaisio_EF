@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Plaisio_EF.Data;
 
@@ -11,9 +12,11 @@ using Plaisio_EF.Data;
 namespace Plaisio_EF.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class BooksContextModelSnapshot : ModelSnapshot
+    [Migration("20241104110520_authors")]
+    partial class authors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
