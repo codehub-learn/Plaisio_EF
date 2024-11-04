@@ -12,8 +12,8 @@ using Plaisio_EF.Data;
 namespace Plaisio_EF.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20241104110520_authors")]
-    partial class authors
+    [Migration("20241104111140_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

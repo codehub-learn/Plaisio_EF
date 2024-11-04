@@ -11,7 +11,7 @@ using Plaisio_EF.Data;
 namespace Plaisio_EF.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class BooksContextModelSnapshot : ModelSnapshot
+    partial class LibraryContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -68,6 +68,31 @@ namespace Plaisio_EF.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("Plaisio_EF.Domain.Synopsis", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WriterFirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WriterLastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId")
+                        .IsUnique();
+
+                    b.ToTable("Synopsae");
+                });
+
             modelBuilder.Entity("Plaisio_EF.Domain.Book", b =>
                 {
                     b.HasOne("Plaisio_EF.Domain.Author", "Author")
@@ -77,9 +102,25 @@ namespace Plaisio_EF.Migrations
                     b.Navigation("Author");
                 });
 
+            modelBuilder.Entity("Plaisio_EF.Domain.Synopsis", b =>
+                {
+                    b.HasOne("Plaisio_EF.Domain.Book", "Book")
+                        .WithOne("Synopsis")
+                        .HasForeignKey("Plaisio_EF.Domain.Synopsis", "BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("Plaisio_EF.Domain.Author", b =>
                 {
                     b.Navigation("AuthoredBooks");
+                });
+
+            modelBuilder.Entity("Plaisio_EF.Domain.Book", b =>
+                {
+                    b.Navigation("Synopsis");
                 });
 #pragma warning restore 612, 618
         }
